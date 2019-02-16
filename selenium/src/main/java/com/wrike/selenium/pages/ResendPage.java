@@ -5,6 +5,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ResendPage {
 	WebDriver driver;
@@ -18,7 +20,13 @@ public class ResendPage {
         this.driver = driver;
     }
 	
-	public void checkTwitterButton(WebDriver driver) {
+	public ResendPage resendEmail() {
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(resendEmailLocator));
+		driver.findElement(resendEmailLocator).click();
+		return this;
+	}
+	
+	public void checkTwitterButton() {
 		boolean isTwitterButton = driver.findElement(twitterButtonLocator).isDisplayed();
 		if (isTwitterButton) {
 			System.out.println("Twitter button found");
@@ -27,7 +35,7 @@ public class ResendPage {
 		}
 	}
 	
-	public void checkTwitterLink(WebDriver driver) {
+	public void checkTwitterLink() {
 		WebElement linkElement = driver.findElement(twitterLinkLocator);
 		String link = linkElement.getAttribute("href");
 		String correctLink = "https://twitter.com/wrike";
@@ -38,7 +46,7 @@ public class ResendPage {
 		}
 	}
 	
-	public void checkTwitterImage(WebDriver driver) {
+	public void checkTwitterImage() {
 		WebElement imageElement = driver.findElement(twitterImageLocator);
 		String link = imageElement.getAttribute("xlink:href");
 		String correctLink = "/content/themes/wrike/dist/img/sprite/vector//footer-icons.symbol.svg?v1#twitter";

@@ -14,8 +14,8 @@ public class Seventh {
     }
 	
 	public void main() {
-		resendPage.checkTwitterButton(driver);
-		resendPage.checkTwitterLink(driver);
-		resendPage.checkTwitterImage(driver);
+		resendPage.checkTwitterButton();
+		resendPage.checkTwitterLink();
+		resendPage.checkTwitterImage();
 	}	
 }

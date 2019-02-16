@@ -48,7 +48,12 @@ public class App {
     	System.out.println("Fourth step done");
     	
     	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
+    	
     	//6. Click on "Resend email" + check it with assertion;
+    	Sixth sixth = new Sixth(driver, resendPage);
+    	resendPage = sixth.main();
+    	System.out.println("Sixth step done");
+    	
     	//7. Check that section "Follow us" at the site footer contains the "Twitter" button that leads to the correct url and has the correct icon.
         Seventh seventh = new Seventh(driver, resendPage);
         seventh.main();
