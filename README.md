@@ -1,5 +1,5 @@
 # Wrike
-Wrike test assignment
+Wrike test assignment (Java Developer in Test (Intern))
  
 Test case scenario:
 
