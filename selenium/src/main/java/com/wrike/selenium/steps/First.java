@@ -12,8 +12,9 @@ public class First {
         this.driver = driver;
     }
 	
-	public void main() {
+	public LoginPage main() {
 		loginPage = new LoginPage(driver);
 		loginPage.getPage();
+		return loginPage;
 	}	
 }

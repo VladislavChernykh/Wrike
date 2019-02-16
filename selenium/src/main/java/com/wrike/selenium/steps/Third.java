@@ -12,12 +12,14 @@ public class Third {
 	WebDriver driver;
 	LoginPage loginPage;
 	
-	public Third (WebDriver driver){
+	public Third (WebDriver driver, LoginPage loginPage){
         this.driver = driver;
+        this.loginPage = loginPage;
     }
 	
 	public void main() {
 		String email = getEmail();
+		
 	}	
 	
 	private String getEmail() {

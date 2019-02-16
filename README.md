@@ -13,8 +13,8 @@ Test case scenario:
 
 Stack of technologies for implementation:
 
-Platform: java8
-Build: maven
-Test framework: junit4
-UI test framework: selenium 3 (without wrappers)
+Platform: java8;
+Build: maven;
+Test framework: junit4;
+UI test framework: selenium 3 (without wrappers);
 Pattern: pageObject (test -> steps -> pages)

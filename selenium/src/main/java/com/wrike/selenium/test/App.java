@@ -3,12 +3,14 @@ package com.wrike.selenium.test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.wrike.selenium.pages.LoginPage;
 import com.wrike.selenium.steps.First;
 import com.wrike.selenium.steps.Second;
 import com.wrike.selenium.steps.Third;
 
 public class App {
 	static WebDriver driver;
+	static LoginPage loginPage;
 	
     public static void main( String[] args ){
     	setSystemProperties();
@@ -21,16 +23,16 @@ public class App {
     private static void doSteps(WebDriver driver) {
     	//1. Open url: wrike.com;
     	First first = new First(driver);
-    	first.main();
+    	loginPage = first.main();
     	System.out.println("First step done");
     	
     	//2. Click "Get started for free" button near "Login" button;
-    	Second second = new Second(driver);
-    	second.main();
+    	Second second = new Second(driver, loginPage);
+    	loginPage = second.main();
     	System.out.println("Second step done");
     	
     	//3. Fill in the email field with random generated value of email with mask “<random_text>+wpt@wriketask.qaa”​ (e.g. “​abcdef+wpt@wriketask.qaa”​ );
-    	Third third = new Third(driver);
+    	Third third = new Third(driver, loginPage);
     	third.main();
     	System.out.println("Third step done");
     	

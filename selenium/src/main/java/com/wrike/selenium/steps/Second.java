@@ -10,16 +10,13 @@ public class Second {
 	LoginPage loginPage;
 	By loginButtonLocator = By.cssSelector("div.wg-header__cell.wg-header__cell--xs-3.wg-header__cell--sm-6.wg-header__cell--md-5.wg-header__cell--xl-5 > div > form > button");
 	
-	public Second (WebDriver driver){
+	public Second (WebDriver driver, LoginPage loginPage){
         this.driver = driver;
+        this.loginPage = loginPage;
     }
 	
-	public void main() {
-		loginPage = submitLogin();
+	public LoginPage main() {
+		loginPage.submitLogin();
+		return loginPage;
 	}	
-	
-	public LoginPage submitLogin() {
-        driver.findElement(loginButtonLocator).click();
-        return new LoginPage(driver);    
-    }
 }
