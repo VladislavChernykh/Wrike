@@ -9,9 +9,10 @@ import org.openqa.selenium.WebElement;
 public class ResendPage {
 	WebDriver driver;
 	By resendEmailLocator 	= By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--order-1.wg-cell--md-5.wg-cell--md-5.wg-cell--md-offset-1.wg-cell--lg-4.wg-cell--lg-offset-1 > p:nth-child(5) > button");
-	By twitterButtonLocator = By.cssSelector("body > div.wg-layout.wg-layout--outline > div > div.wg-footer__bottom-section > div > div.wg-footer__social-block > div > ul > li:nth-child(1)");
-	By twitterLinkLocator 	= By.cssSelector("body > div.wg-layout.wg-layout--outline > div > div.wg-footer__bottom-section > div > div.wg-footer__social-block > div > ul > li:nth-child(1) > a");
-	By twitterImageLocator 	= By.cssSelector("body > div.wg-layout.wg-layout--outline > div > div.wg-footer__bottom-section > div > div.wg-footer__social-block > div > ul > li:nth-child(1) > a > svg > use");
+	By submitResultsLocator = By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > button");
+	By twitterButtonLocator = By.cssSelector("div.wg-footer__social-block > div > ul > li:nth-child(1)");
+	By twitterLinkLocator 	= By.cssSelector("div.wg-footer__social-block > div > ul > li:nth-child(1) > a");
+	By twitterImageLocator 	= By.cssSelector("div.wg-footer__social-block > div > ul > li:nth-child(1) > a > svg > use");
 	
 	public ResendPage (WebDriver driver){
         this.driver = driver;
