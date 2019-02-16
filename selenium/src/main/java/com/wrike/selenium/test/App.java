@@ -6,9 +6,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import com.wrike.selenium.pages.LoginPage;
 import com.wrike.selenium.pages.ResendPage;
 import com.wrike.selenium.steps.First;
-import com.wrike.selenium.steps.Fourth;
 import com.wrike.selenium.steps.Second;
 import com.wrike.selenium.steps.Third;
+import com.wrike.selenium.steps.Fourth;
+import com.wrike.selenium.steps.Fifth;
+import com.wrike.selenium.steps.Sixth;
+import com.wrike.selenium.steps.Seventh;
 
 public class App {
 	static WebDriver driver;
@@ -47,7 +50,10 @@ public class App {
     	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
     	//6. Click on "Resend email" + check it with assertion;
     	//7. Check that section "Follow us" at the site footer contains the "Twitter" button that leads to the correct url and has the correct icon.
-        
+        Seventh seventh = new Seventh(driver, resendPage);
+        seventh.main();
+        System.out.println("Seventh step done");
+    	
     	System.out.println("Success");
     }
     

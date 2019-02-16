@@ -1,5 +1,21 @@
 package com.wrike.selenium.steps;
 
-public class Seventh {
+import org.openqa.selenium.WebDriver;
 
+import com.wrike.selenium.pages.ResendPage;
+
+public class Seventh {
+	WebDriver driver;
+	ResendPage resendPage;
+	
+	public Seventh (WebDriver driver, ResendPage resendPage){
+        this.driver = driver;
+        this.resendPage = resendPage;
+    }
+	
+	public void main() {
+		resendPage.checkTwitterButton(driver);
+		resendPage.checkTwitterLink(driver);
+		resendPage.checkTwitterImage(driver);
+	}	
 }
