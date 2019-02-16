@@ -5,11 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.wrike.selenium.steps.First;
 import com.wrike.selenium.steps.Second;
+import com.wrike.selenium.steps.Third;
 
 public class App {
 	static WebDriver driver;
-	//First first;
-	Second second;
 	
     public static void main( String[] args ){
     	setSystemProperties();
@@ -31,6 +30,10 @@ public class App {
     	System.out.println("Second step done");
     	
     	//3. Fill in the email field with random generated value of email with mask “<random_text>+wpt@wriketask.qaa”​ (e.g. “​abcdef+wpt@wriketask.qaa”​ );
+    	Third third = new Third(driver);
+    	third.main();
+    	System.out.println("Third step done");
+    	
     	//4. Click on "Create my Wrike account" button + check with assertion that you are moved to the next page;
     	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
     	//6. Click on "Resend email" + check it with assertion;
