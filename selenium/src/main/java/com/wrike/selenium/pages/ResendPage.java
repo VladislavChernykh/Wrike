@@ -1,5 +1,11 @@
 package com.wrike.selenium.pages;
 
-public class ResendPage {
+import org.openqa.selenium.WebDriver;
 
+public class ResendPage {
+	WebDriver driver;
+	
+	public ResendPage (WebDriver driver){
+        this.driver = driver;
+    }
 }

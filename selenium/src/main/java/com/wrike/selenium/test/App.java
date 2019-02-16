@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.wrike.selenium.pages.LoginPage;
+import com.wrike.selenium.pages.ResendPage;
 import com.wrike.selenium.steps.First;
 import com.wrike.selenium.steps.Fourth;
 import com.wrike.selenium.steps.Second;
@@ -12,6 +13,7 @@ import com.wrike.selenium.steps.Third;
 public class App {
 	static WebDriver driver;
 	static LoginPage loginPage;
+	static ResendPage resendPage;
 	
     public static void main( String[] args ){
     	setSystemProperties();
@@ -39,7 +41,7 @@ public class App {
     	
     	//4. Click on "Create my Wrike account" button + check with assertion that you are moved to the next page;
     	Fourth fourth = new Fourth(driver, loginPage);
-    	fourth.main(email);
+    	resendPage = fourth.main(email);
     	System.out.println("Fourth step done");
     	
     	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
