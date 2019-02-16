@@ -3,7 +3,6 @@ package com.wrike.selenium.steps;
 import java.util.Random;
 import java.util.UUID;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.wrike.selenium.pages.LoginPage;
@@ -17,9 +16,9 @@ public class Third {
         this.loginPage = loginPage;
     }
 	
-	public void main() {
+	public String main() {
 		String email = getEmail();
-		
+		return email;
 	}	
 	
 	private String getEmail() {

@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.wrike.selenium.pages.LoginPage;
 import com.wrike.selenium.steps.First;
+import com.wrike.selenium.steps.Fourth;
 import com.wrike.selenium.steps.Second;
 import com.wrike.selenium.steps.Third;
 
@@ -33,10 +34,14 @@ public class App {
     	
     	//3. Fill in the email field with random generated value of email with mask “<random_text>+wpt@wriketask.qaa”​ (e.g. “​abcdef+wpt@wriketask.qaa”​ );
     	Third third = new Third(driver, loginPage);
-    	third.main();
+    	String email = third.main();
     	System.out.println("Third step done");
     	
     	//4. Click on "Create my Wrike account" button + check with assertion that you are moved to the next page;
+    	Fourth fourth = new Fourth(driver, loginPage);
+    	fourth.main(email);
+    	System.out.println("Fourth step done");
+    	
     	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
     	//6. Click on "Resend email" + check it with assertion;
     	//7. Check that section "Follow us" at the site footer contains the "Twitter" button that leads to the correct url and has the correct icon.
