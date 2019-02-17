@@ -2,10 +2,13 @@ package com.wrike.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class LoginPage {
-	WebDriver driver;
+	final WebDriver driver;
+	
 	By loginButtonLocator = By.cssSelector("div.wg-header__cell.wg-header__cell--xs-3.wg-header__cell--sm-6.wg-header__cell--md-5.wg-header__cell--xl-5 > div > form > button");
 	By createAccountLocator = By.cssSelector("#modal-pro > form > label:nth-child(4) > button");
 	By usernameLocator = By.cssSelector("#modal-pro > form > label:nth-child(3) > input");
@@ -29,8 +32,26 @@ public class LoginPage {
     }
     
     public ResendPage createAccount() {
+    	String linkBeforeClick = driver.getCurrentUrl();
         driver.findElement(createAccountLocator).click();
-        ResendPage resendPage = new ResendPage(driver);
+
+        Boolean isRedirect = (new WebDriverWait(driver, 10)).until(ExpectedConditions.urlContains("resend"));
+        if (isRedirect) {
+        	String linkAfterClick = driver.getCurrentUrl();
+            assertRedirect(linkBeforeClick,linkAfterClick);
+        } else {
+        	System.out.println("Warning: Redirect was not performed");
+        }
+   
+        ResendPage resendPage = new ResendPage(driver);   
         return resendPage;    
+    }
+    
+    private void assertRedirect(String before, String after) {
+    	if (before.equals(after)) {
+    		System.out.println("Assert: No redirect");
+    	} else {
+    		System.out.println("Assert: Redirect was found");
+    	}
     }
 }

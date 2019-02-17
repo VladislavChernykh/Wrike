@@ -10,11 +10,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ResendPage {
-	WebDriver driver;
+	final WebDriver driver;
 	
-	By firstBarLocator  = By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(6)");
-	By secondBarLocator = By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(8)");
-	By thirdBarLocator  = By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(10)");
+	By firstBarLocator  = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(6)");
+	By secondBarLocator = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(8)");
+	By thirdBarLocator  = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(10)");
 	
 	By resendEmailLocator 	= By.cssSelector("div.wg-cell.wg-cell--order-1.wg-cell--md-5.wg-cell--md-5.wg-cell--md-offset-1.wg-cell--lg-4.wg-cell--lg-offset-1 > p:nth-child(5) > button");
 	By submitResultsLocator = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > button");
@@ -69,9 +69,9 @@ public class ResendPage {
 		boolean isButtonClicked = buttonClass.contains("wg-btn--loading");
 	
 		if (isButtonClicked) {
-			System.out.println("Assert: button is clicked");
+			System.out.println("Assert: Button is clicked");
 		} else {
-			System.out.println("Assert: button was not clicked yet");
+			System.out.println("Assert: Button was not clicked yet");
 		}
 	}
 
