@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ResendPage {
 	WebDriver driver;
-	By resendEmailLocator 	= By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--order-1.wg-cell--md-5.wg-cell--md-5.wg-cell--md-offset-1.wg-cell--lg-4.wg-cell--lg-offset-1 > p:nth-child(5) > button");
-	By submitResultsLocator = By.cssSelector("body > div.wg-layout.wg-layout--outline > main > div > div > div.section.section-resend-main.section-resend-main-va.section-resend-main--survey > div > div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > button");
+	By resendEmailLocator 	= By.cssSelector("div.wg-cell.wg-cell--order-1.wg-cell--md-5.wg-cell--md-5.wg-cell--md-offset-1.wg-cell--lg-4.wg-cell--lg-offset-1 > p:nth-child(5) > button");
+	By submitResultsLocator = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > button");
 	By twitterButtonLocator = By.cssSelector("div.wg-footer__social-block > div > ul > li:nth-child(1)");
 	By twitterLinkLocator 	= By.cssSelector("div.wg-footer__social-block > div > ul > li:nth-child(1) > a");
 	By twitterImageLocator 	= By.cssSelector("div.wg-footer__social-block > div > ul > li:nth-child(1) > a > svg > use");
@@ -26,27 +26,30 @@ public class ResendPage {
 		return this;
 	}
 
-	private void buttonAssertTrue(WebElement resendEmailButton) {
+	private void buttonAssertTrue(WebElement resendEmailButton) {	
+		pageLoading();
+		boolean isButtonDisplayed = resendEmailButton.isDisplayed();
+		if (isButtonDisplayed) {
+			System.out.println("Assert: Resend button is on the page");
+		} else {
+			System.out.println("Assert: Resend button disappeared");
+		}
+	}
+	
+	private void pageLoading() {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
-		
-		boolean isButtonDisplayed = resendEmailButton.isDisplayed();
-		if (isButtonDisplayed) {
-			System.out.println("Resend button is on the page");
-		} else {
-			System.out.println("Resend button disappeared");
 		}
 	}
 	
 	public void checkTwitterButton() {
 		boolean isTwitterButton = driver.findElement(twitterButtonLocator).isDisplayed();
 		if (isTwitterButton) {
-			System.out.println("Twitter button found");
+			System.out.println("Assert: Twitter button found");
 		} else {
-			System.out.println("Twitter button not found");
+			System.out.println("Assert: Twitter button not found");
 		}
 	}
 	
@@ -55,9 +58,9 @@ public class ResendPage {
 		String link = linkElement.getAttribute("href");
 		String correctLink = "https://twitter.com/wrike";
 		if ((link).equals(correctLink)) {
-			System.out.println("Twitter link is correct");
+			System.out.println("Assert: Twitter link is correct");
 		} else {
-			System.out.println("Twitter link is not correct");
+			System.out.println("Assert: Twitter link is not correct");
 		}
 	}
 	
@@ -66,9 +69,9 @@ public class ResendPage {
 		String link = imageElement.getAttribute("xlink:href");
 		String correctLink = "/content/themes/wrike/dist/img/sprite/vector//footer-icons.symbol.svg?v1#twitter";
 		if ((link).equals(correctLink)) {
-			System.out.println("There is a Twitter icon");
+			System.out.println("Assert: There is a Twitter icon");
 		} else {
-			System.out.println("There is not a Twitter icon");
+			System.out.println("Assert: There is not a Twitter icon");
 		}
 	}
 }

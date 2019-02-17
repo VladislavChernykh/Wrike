@@ -48,6 +48,9 @@ public class App {
     	System.out.println("Fourth step done");
     	
     	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
+    	Fifth fifth = new Fifth(driver, resendPage);
+    	resendPage = fifth.main();
+    	System.out.println("Fifth step done");
     	
     	//6. Click on "Resend email" + check it with assertion;
     	Sixth sixth = new Sixth(driver, resendPage);
@@ -59,7 +62,7 @@ public class App {
         seventh.main();
         System.out.println("Seventh step done");
     	
-    	System.out.println("Success");
+    	System.out.println("Successfully finished!");
     }
     
     private static void setSystemProperties() {
