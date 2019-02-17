@@ -18,7 +18,7 @@ public class App {
 	static LoginPage loginPage;
 	static ResendPage resendPage;
 	
-    public static void main( String[] args ){
+    public static void main(String[] args ){
     	setSystemProperties();
         driver = new ChromeDriver();
         doSteps(driver); 
