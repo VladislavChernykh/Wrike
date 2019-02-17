@@ -15,8 +15,7 @@ public class Fourth {
         this.loginPage = loginPage;
     }
 	
-	public ResendPage main(String email) {
-		loginPage.typeEmail(email);
+	public ResendPage main() {
 		resendPage = loginPage.createAccount();
 		return resendPage;
 	}	

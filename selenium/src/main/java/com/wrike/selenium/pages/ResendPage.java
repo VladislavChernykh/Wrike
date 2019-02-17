@@ -3,14 +3,17 @@ package com.wrike.selenium.pages;
 import java.util.List;
 import java.util.Random;
 
+//import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+//import static org.junit.Assert.assertTrue;
 
 public class ResendPage {
 	final WebDriver driver;
+	WebElement resendEmailButton;
 	
 	By firstBarLocator  = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(6)");
 	By secondBarLocator = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(8)");
@@ -58,14 +61,22 @@ public class ResendPage {
 	
 	public ResendPage resendEmail() {
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(resendEmailLocator));
-		WebElement resendEmailButton = driver.findElement(resendEmailLocator);
+		//WebElement resendEmailButton = driver.findElement(resendEmailLocator);
+		resendEmailButton = driver.findElement(resendEmailLocator);
 		resendEmailButton.click();
+		//assertTrue(resendEmailButton.getAttribute("class").contains("wg-btn--loading"));
 		buttonAssertTrue(resendEmailButton);
 		return this;
 	}
-
+	
+	/*@Test
+	public void assertResendButton() {
+		assertTrue(resendEmailButton.getAttribute("class").contains("wg-btn--loading"));
+	}*/
+	
 	private void buttonAssertTrue(WebElement button) {	
 		String buttonClass = button.getAttribute("class");
+		//assertTrue(buttonClass.contains("wg-btn--loading"));
 		boolean isButtonClicked = buttonClass.contains("wg-btn--loading");
 	
 		if (isButtonClicked) {
@@ -73,6 +84,11 @@ public class ResendPage {
 		} else {
 			System.out.println("Assert: Button was not clicked yet");
 		}
+		System.out.println("Assert: Button is clicked");
+	}
+	
+	public void testCase() {
+		
 	}
 
 	public void checkTwitterButton() {

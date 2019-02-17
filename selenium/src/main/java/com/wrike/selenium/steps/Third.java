@@ -16,9 +16,9 @@ public class Third {
         this.loginPage = loginPage;
     }
 	
-	public String main() {
+	public void main() {
 		String email = getEmail();
-		return email;
+		loginPage.typeEmail(email);
 	}	
 	
 	private String getEmail() {
