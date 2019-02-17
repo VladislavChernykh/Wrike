@@ -94,11 +94,6 @@ public class App {
         System.out.println("Seventh step done");
     }
     
-    private static void setSystemProperties() {
-		String projectLocation = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", projectLocation + "\\chromedriver.exe");
-	}
-    
     LoginPage getLoginPage() {
     	return loginPage;
     }
@@ -107,6 +102,10 @@ public class App {
     	return resendPage;
     }
     
+    private static void setSystemProperties() {
+		String projectLocation = System.getProperty("user.dir");
+		System.setProperty("webdriver.chrome.driver", projectLocation + "\\chromedriver.exe");
+	}
     void quit() {
     	driver.quit();
     }

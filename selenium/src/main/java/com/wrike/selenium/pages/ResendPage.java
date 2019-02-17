@@ -67,42 +67,11 @@ public class ResendPage {
 		resendEmailButton.click();
 		return this;
 	}
-
-	public void checkTwitterButton() {
-		boolean isTwitterButton = driver.findElement(twitterButtonLocator).isDisplayed();
-		if (isTwitterButton) {
-			System.out.println("Assert: Twitter button found");
-		} else {
-			System.out.println("Assert: Twitter button not found");
-		}
-	}
 	
 	public void setTwitterElements() {
 		twitterButton = driver.findElement(twitterButtonLocator);
 		twitterLink   = driver.findElement(twitterLinkLocator);
 		twitterImage  = driver.findElement(twitterImageLocator);
-	}
-	
-	public void checkTwitterLink() {
-		WebElement linkElement = driver.findElement(twitterLinkLocator);
-		String link = linkElement.getAttribute("href");
-		String correctLink = "https://twitter.com/wrike";
-		if ((link).equals(correctLink)) {
-			System.out.println("Assert: Twitter link is correct");
-		} else {
-			System.out.println("Assert: Twitter link is not correct");
-		}
-	}
-	
-	public void checkTwitterImage() {
-		WebElement imageElement = driver.findElement(twitterImageLocator);
-		String link = imageElement.getAttribute("xlink:href");
-		String correctLink = "/content/themes/wrike/dist/img/sprite/vector//footer-icons.symbol.svg?v1#twitter";
-		if ((link).equals(correctLink)) {
-			System.out.println("Assert: There is a Twitter icon");
-		} else {
-			System.out.println("Assert: There is not a Twitter icon");
-		}
 	}
 	
 	WebElement getResendEmailButton() {
@@ -122,6 +91,5 @@ public class ResendPage {
 	}
 	WebElement getTwitterImage() {
 		return twitterImage;
-	}
-	
+	}	
 }

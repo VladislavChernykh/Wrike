@@ -1,35 +1,18 @@
 package com.wrike.selenium;
 
-import org.openqa.selenium.WebDriver;
+import org.junit.Test;
 
 import com.wrike.selenium.pages.LoginPage;
 import com.wrike.selenium.pages.LoginPageTest;
 import com.wrike.selenium.pages.ResendPage;
 import com.wrike.selenium.pages.ResendPageTest;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-public class AppTest 
-    extends TestCase
-{
-	WebDriver driver;
-	LoginPage loginPage = new LoginPage(driver);
-	ResendPage resendPage = new ResendPage(driver);
-	
-    public AppTest( String appTestCase )
-    {
-        super(appTestCase);
-    }
-
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+public class AppTest extends TestCase{
     
-    public void testApp()
-    {
+    @Test
+    public void testApp(){
     	App app = new App();
     	app.doFirstStep();
     	app.doSecondStep();
@@ -52,24 +35,28 @@ public class AppTest
     }
     
     private void testRedirectAssert(App app) {
+    	LoginPage loginPage = new LoginPage(null);
     	loginPage = app.getLoginPage();
     	LoginPageTest loginPageTest = new LoginPageTest(loginPage);
     	loginPageTest.testRedirect();
     }
     
     private void testSubmitClickButton(App app) {
+    	ResendPage resendPage = new ResendPage(null);
     	resendPage = app.getResendPage();
     	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
     	resendPageTest.submitButtonIsClickedAssert();
     }
     
     private void testResendEmailClickButton(App app) {
+    	ResendPage resendPage = new ResendPage(null);
     	resendPage = app.getResendPage();
     	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
     	resendPageTest.resendEmailButtonIsClickedAssert();
     }
     
     private void testCheckTwitterProperties(App app) {
+    	ResendPage resendPage = new ResendPage(null);
     	resendPage = app.getResendPage();
     	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
     	resendPageTest.twitterElsCorrectnessAssert();
