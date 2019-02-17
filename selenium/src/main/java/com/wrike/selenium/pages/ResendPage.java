@@ -1,6 +1,5 @@
 package com.wrike.selenium.pages;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -28,26 +27,33 @@ public class ResendPage {
     }
 	
 	public void fillQuiz() {
-		sleeps(1000);
-		WebElement firstBar = driver.findElement(firstBarLocator);
-		selectRandomItems(firstBar);
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(thirdBarLocator));
+		try {
+			WebElement firstBar = driver.findElement(firstBarLocator);
+			selectRandomItems(firstBar);
 
-		WebElement secondBar = driver.findElement(secondBarLocator);
-		selectRandomItems(secondBar);
+			WebElement secondBar = driver.findElement(secondBarLocator);
+			selectRandomItems(secondBar);
 
-		WebElement thirdBar = driver.findElement(thirdBarLocator);
-		selectRandomItems(thirdBar);
+			WebElement thirdBar = driver.findElement(thirdBarLocator);
+			selectRandomItems(thirdBar);
+		} catch (Exception e) {
+			System.out.println("Required bar was not found");
+		}
 	}
 	
 	private void selectRandomItems(WebElement Bar) {
 		List<WebElement> BarEls = Bar.findElements(By.tagName("button"));
 		Random random = new Random();
-		int index = random.nextInt(BarEls.size());
+		int index = random.nextInt(BarEls.size()-1);
 		BarEls.get(index).click();
 	}
 	
-	public void submitButtonClick() {
-		
+	public ResendPage submitButtonClick() {
+		WebElement submitButton = driver.findElement(submitResultsLocator);
+		submitButton.click();
+		buttonAssertTrue(submitButton);
+		return this;
 	}
 	
 	public ResendPage resendEmail() {
@@ -58,24 +64,17 @@ public class ResendPage {
 		return this;
 	}
 
-	private void buttonAssertTrue(WebElement resendEmailButton) {	
-		sleeps(3000);
-		boolean isButtonDisplayed = resendEmailButton.isDisplayed();
-		if (isButtonDisplayed) {
-			System.out.println("Assert: Resend button is on the page");
+	private void buttonAssertTrue(WebElement button) {	
+		String buttonClass = button.getAttribute("class");
+		boolean isButtonClicked = buttonClass.contains("wg-btn--loading");
+	
+		if (isButtonClicked) {
+			System.out.println("Assert: button is clicked");
 		} else {
-			System.out.println("Assert: Resend button disappeared");
+			System.out.println("Assert: button was not clicked yet");
 		}
 	}
-	
-	private void sleeps(int value) {
-		try {
-			Thread.sleep(value);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	public void checkTwitterButton() {
 		boolean isTwitterButton = driver.findElement(twitterButtonLocator).isDisplayed();
 		if (isTwitterButton) {

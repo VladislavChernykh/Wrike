@@ -15,6 +15,7 @@ public class Fifth {
 	
 	public ResendPage main() {
 		resendPage.fillQuiz();
+		resendPage = resendPage.submitButtonClick();
 		return resendPage;
 	}	
 }
