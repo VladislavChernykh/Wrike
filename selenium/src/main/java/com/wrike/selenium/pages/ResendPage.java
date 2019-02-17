@@ -1,7 +1,5 @@
 package com.wrike.selenium.pages;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,8 +20,25 @@ public class ResendPage {
 	
 	public ResendPage resendEmail() {
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(resendEmailLocator));
-		driver.findElement(resendEmailLocator).click();
+		WebElement resendEmailButton = driver.findElement(resendEmailLocator);
+		resendEmailButton.click();
+		buttonAssertTrue(resendEmailButton);
 		return this;
+	}
+
+	private void buttonAssertTrue(WebElement resendEmailButton) {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		boolean isButtonDisplayed = resendEmailButton.isDisplayed();
+		if (isButtonDisplayed) {
+			System.out.println("Resend button is on the page");
+		} else {
+			System.out.println("Resend button disappeared");
+		}
 	}
 	
 	public void checkTwitterButton() {
