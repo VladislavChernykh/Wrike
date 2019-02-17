@@ -14,6 +14,7 @@ public class Fifth {
     }
 	
 	public ResendPage main() {
+		resendPage.fillQuiz();
 		return resendPage;
 	}	
 }
