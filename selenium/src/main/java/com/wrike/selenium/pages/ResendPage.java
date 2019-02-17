@@ -14,6 +14,10 @@ public class ResendPage {
 	WebElement resendEmailButton;
 	WebElement submitButton;
 	
+	WebElement twitterButton;
+	WebElement twitterLink;
+	WebElement twitterImage;
+	
 	By firstBarLocator  = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(6)");
 	By secondBarLocator = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(8)");
 	By thirdBarLocator  = By.cssSelector("div.wg-cell.wg-cell--md-6.wg-cell--lg-7 > div > form > div:nth-child(10)");
@@ -73,6 +77,12 @@ public class ResendPage {
 		}
 	}
 	
+	public void setTwitterElements() {
+		twitterButton = driver.findElement(twitterButtonLocator);
+		twitterLink   = driver.findElement(twitterLinkLocator);
+		twitterImage  = driver.findElement(twitterImageLocator);
+	}
+	
 	public void checkTwitterLink() {
 		WebElement linkElement = driver.findElement(twitterLinkLocator);
 		String link = linkElement.getAttribute("href");
@@ -102,4 +112,16 @@ public class ResendPage {
 	WebElement getSubmitButton() {
 		return submitButton;
 	}
+	
+	WebElement getTwitterButton() {
+		return twitterButton;
+	}
+	
+	WebElement getTwitterLink() {
+		return twitterLink;
+	}
+	WebElement getTwitterImage() {
+		return twitterImage;
+	}
+	
 }

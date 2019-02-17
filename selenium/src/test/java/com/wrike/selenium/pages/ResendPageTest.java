@@ -23,4 +23,15 @@ public class ResendPageTest {
 		WebElement resendEmailButton = resendPage.getResendEmailButton();
 		assertTrue(resendEmailButton.getAttribute("class").contains("wg-btn--loading"));
 	}
+	
+	@Test
+	public void twitterElsCorrectnessAssert() {
+		WebElement twitterButton = resendPage.getTwitterButton();
+		WebElement twitterLink	 = resendPage.getTwitterLink();
+		WebElement twitterImage  = resendPage.getTwitterImage();
+		
+		assertTrue(twitterButton.isDisplayed());
+		assertTrue((twitterLink.getAttribute("href")).equals("https://twitter.com/wrike"));
+		assertTrue(twitterImage.getAttribute("xlink:href").equals("/content/themes/wrike/dist/img/sprite/vector//footer-icons.symbol.svg?v1#twitter"));
+	}
 }

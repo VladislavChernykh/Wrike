@@ -15,6 +15,8 @@ public class AppTest
     extends TestCase
 {
 	WebDriver driver;
+	LoginPage loginPage = new LoginPage(driver);
+	ResendPage resendPage = new ResendPage(driver);
 	
     public AppTest( String appTestCase )
     {
@@ -43,29 +45,33 @@ public class AppTest
     	testResendEmailClickButton(app);
     	
     	app.doSeventhStep();
+    	testCheckTwitterProperties(app);
     	
     	app.quit();
     	assertTrue(true);
     }
     
     private void testRedirectAssert(App app) {
-    	LoginPage loginPage = new LoginPage(driver);
     	loginPage = app.getLoginPage();
     	LoginPageTest loginPageTest = new LoginPageTest(loginPage);
     	loginPageTest.testRedirect();
     }
     
     private void testSubmitClickButton(App app) {
-    	ResendPage resendPage = new ResendPage(driver);
     	resendPage = app.getResendPage();
     	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
     	resendPageTest.submitButtonIsClickedAssert();
     }
     
     private void testResendEmailClickButton(App app) {
-    	ResendPage resendPage = new ResendPage(driver);
     	resendPage = app.getResendPage();
     	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
-    	resendPageTest.resendEmailButtonIsClickedAssert();;
+    	resendPageTest.resendEmailButtonIsClickedAssert();
+    }
+    
+    private void testCheckTwitterProperties(App app) {
+    	resendPage = app.getResendPage();
+    	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
+    	resendPageTest.twitterElsCorrectnessAssert();
     }
 }
