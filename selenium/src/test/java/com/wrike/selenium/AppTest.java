@@ -1,28 +1,25 @@
 package com.wrike.selenium;
 
+import org.openqa.selenium.WebDriver;
+
+import com.wrike.selenium.pages.LoginPage;
+import com.wrike.selenium.pages.LoginPageTest;
+import com.wrike.selenium.pages.ResendPage;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest 
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+	WebDriver driver;
+	
+    public AppTest( String appTestCase )
     {
-        super( testName );
+        super(appTestCase);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
     public static Test suite()
     {
         return new TestSuite( AppTest.class );
@@ -30,6 +27,26 @@ public class AppTest
     
     public void testApp()
     {
-        assertTrue( true );
+    	App app = new App();
+    	app.doFirstStep();
+    	app.doSecondStep();
+    	app.doThirdStep();
+    	app.doFourthStep();
+    	
+    	testRedirectAssert(app);
+    	
+    	app.doFifthStep();
+    	app.doSixthStep();
+    	app.doSeventhStep();
+    	
+    	app.quit();
+    	assertTrue(true);
+    }
+    
+    private void testRedirectAssert(App app) {
+    	LoginPage loginPage = new LoginPage(driver);
+    	loginPage = app.getLoginPage();
+    	LoginPageTest loginPageTest = new LoginPageTest(loginPage);
+    	loginPageTest.testRedirect();
     }
 }

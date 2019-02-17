@@ -1,4 +1,4 @@
-package com.wrike.selenium.test;
+package com.wrike.selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,24 +35,16 @@ public class App {
         	doThirdStep();
         	
         	//4. Click on "Create my Wrike account" button + check with assertion that you are moved to the next page;
-        	Fourth fourth = new Fourth(driver, loginPage);
-        	resendPage = fourth.main();
-        	System.out.println("Fourth step done");
+        	doFourthStep();
         	
         	//5. Fill in the Q&A section at the left part of page (like random generated answers) + check with assertion that your answers are submitted;
-        	Fifth fifth = new Fifth(driver, resendPage);
-        	resendPage = fifth.main();
-        	System.out.println("Fifth step done");
+        	doFifthStep();
         	
         	//6. Click on "Resend email" + check it with assertion;
-        	Sixth sixth = new Sixth(driver, resendPage);
-        	resendPage = sixth.main();
-        	System.out.println("Sixth step done");
+        	doSixthStep();
         	
         	//7. Check that section "Follow us" at the site footer contains the "Twitter" button that leads to the correct url and has the correct icon.
-            Seventh seventh = new Seventh(driver, resendPage);
-            seventh.main();
-            System.out.println("Seventh step done");
+        	doSeventhStep();
             
         	System.out.println("Successfully finished!");
     	} catch (Exception e) {
@@ -78,10 +70,38 @@ public class App {
     	System.out.println("Third step done");
     }
     
+    void doFourthStep() {
+    	Fourth fourth = new Fourth(driver, loginPage);
+    	resendPage = fourth.main();
+    	System.out.println("Fourth step done");
+    }
+    
+    void doFifthStep() {
+    	Fifth fifth = new Fifth(driver, resendPage);
+    	resendPage = fifth.main();
+    	System.out.println("Fifth step done");
+    }
+    
+    void doSixthStep() {
+    	Sixth sixth = new Sixth(driver, resendPage);
+    	resendPage = sixth.main();
+    	System.out.println("Sixth step done");
+    }
+    
+    void doSeventhStep() {
+    	Seventh seventh = new Seventh(driver, resendPage);
+        seventh.main();
+        System.out.println("Seventh step done");
+    }
+    
     private static void setSystemProperties() {
 		String projectLocation = System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver", projectLocation + "\\chromedriver.exe");
 	}
+    
+    LoginPage getLoginPage() {
+    	return loginPage;
+    }
     
     void quit() {
     	driver.quit();

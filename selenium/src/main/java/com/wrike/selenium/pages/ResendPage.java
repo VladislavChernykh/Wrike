@@ -69,11 +69,6 @@ public class ResendPage {
 		return this;
 	}
 	
-	/*@Test
-	public void assertResendButton() {
-		assertTrue(resendEmailButton.getAttribute("class").contains("wg-btn--loading"));
-	}*/
-	
 	private void buttonAssertTrue(WebElement button) {	
 		String buttonClass = button.getAttribute("class");
 		//assertTrue(buttonClass.contains("wg-btn--loading"));
@@ -85,10 +80,6 @@ public class ResendPage {
 			System.out.println("Assert: Button was not clicked yet");
 		}
 		System.out.println("Assert: Button is clicked");
-	}
-	
-	public void testCase() {
-		
 	}
 
 	public void checkTwitterButton() {

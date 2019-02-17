@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 	final WebDriver driver;
+	String linkBeforeClick;
+	String linkAfterClick;
 	
 	By loginButtonLocator = By.cssSelector("div.wg-header__cell.wg-header__cell--xs-3.wg-header__cell--sm-6.wg-header__cell--md-5.wg-header__cell--xl-5 > div > form > button");
 	By createAccountLocator = By.cssSelector("#modal-pro > form > label:nth-child(4) > button");
@@ -32,13 +34,13 @@ public class LoginPage {
     }
     
     public ResendPage createAccount() {
-    	String linkBeforeClick = driver.getCurrentUrl();
+    	linkBeforeClick = driver.getCurrentUrl();
         driver.findElement(createAccountLocator).click();
 
         Boolean isRedirect = (new WebDriverWait(driver, 10)).until(ExpectedConditions.urlContains("resend"));
         if (isRedirect) {
-        	String linkAfterClick = driver.getCurrentUrl();
-            assertRedirect(linkBeforeClick,linkAfterClick);
+        	linkAfterClick = driver.getCurrentUrl();
+            assertRedirect(linkBeforeClick, linkAfterClick);
         } else {
         	System.out.println("Warning: Redirect was not performed");
         }
@@ -53,5 +55,17 @@ public class LoginPage {
     	} else {
     		System.out.println("Assert: Redirect was found");
     	}
+    }
+    
+    public LoginPage getLoginPage() {
+    	return this;
+    }
+    
+    String getlinkBeforeClick() {
+    	return linkBeforeClick;
+    }
+    
+    String getlinkAfterClick() {
+    	return linkAfterClick;
     }
 }
