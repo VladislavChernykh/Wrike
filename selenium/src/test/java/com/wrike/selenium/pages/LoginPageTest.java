@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class LoginPageTest {
 	LoginPage loginPage;
+	
 	public LoginPageTest (LoginPage loginPage){
         this.loginPage = loginPage;
     }

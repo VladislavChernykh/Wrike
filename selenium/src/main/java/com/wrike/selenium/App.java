@@ -103,6 +103,10 @@ public class App {
     	return loginPage;
     }
     
+    ResendPage getResendPage() {
+    	return resendPage;
+    }
+    
     void quit() {
     	driver.quit();
     }
