@@ -40,21 +40,12 @@ public class LoginPage {
         Boolean isRedirect = (new WebDriverWait(driver, 10)).until(ExpectedConditions.urlContains("resend"));
         if (isRedirect) {
         	linkAfterClick = driver.getCurrentUrl();
-            assertRedirect(linkBeforeClick, linkAfterClick);
         } else {
         	System.out.println("Warning: Redirect was not performed");
         }
    
         ResendPage resendPage = new ResendPage(driver);   
         return resendPage;    
-    }
-    
-    private void assertRedirect(String before, String after) {
-    	if (before.equals(after)) {
-    		System.out.println("Assert: No redirect");
-    	} else {
-    		System.out.println("Assert: Redirect was found");
-    	}
     }
     
     public LoginPage getLoginPage() {

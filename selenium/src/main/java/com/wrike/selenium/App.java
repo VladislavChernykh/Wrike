@@ -14,9 +14,9 @@ import com.wrike.selenium.steps.Sixth;
 import com.wrike.selenium.steps.Seventh;
 
 public class App {
-	static WebDriver driver;
-	static LoginPage loginPage;
-	static ResendPage resendPage;
+	WebDriver driver;
+	LoginPage loginPage;
+	ResendPage resendPage;
     
     public App() {
     	setSystemProperties();

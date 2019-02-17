@@ -40,7 +40,7 @@ public class AppTest
     	testSubmitClickButton(app);
     	
     	app.doSixthStep();
-    	
+    	testResendEmailClickButton(app);
     	
     	app.doSeventhStep();
     	
@@ -60,5 +60,12 @@ public class AppTest
     	resendPage = app.getResendPage();
     	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
     	resendPageTest.submitButtonIsClickedAssert();
+    }
+    
+    private void testResendEmailClickButton(App app) {
+    	ResendPage resendPage = new ResendPage(driver);
+    	resendPage = app.getResendPage();
+    	ResendPageTest resendPageTest = new ResendPageTest(resendPage);
+    	resendPageTest.resendEmailButtonIsClickedAssert();;
     }
 }

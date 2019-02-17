@@ -54,7 +54,6 @@ public class ResendPage {
 	public ResendPage submitButtonClick() {
 		submitButton = driver.findElement(submitResultsLocator);
 		submitButton.click();
-		buttonAssertTrue(submitButton);
 		return this;
 	}
 	
@@ -62,22 +61,7 @@ public class ResendPage {
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(resendEmailLocator));
 		resendEmailButton = driver.findElement(resendEmailLocator);
 		resendEmailButton.click();
-		//assertTrue(resendEmailButton.getAttribute("class").contains("wg-btn--loading"));
-		buttonAssertTrue(resendEmailButton);
 		return this;
-	}
-	
-	private void buttonAssertTrue(WebElement button) {	
-		String buttonClass = button.getAttribute("class");
-		//assertTrue(buttonClass.contains("wg-btn--loading"));
-		boolean isButtonClicked = buttonClass.contains("wg-btn--loading");
-	
-		if (isButtonClicked) {
-			System.out.println("Assert: Button is clicked");
-		} else {
-			System.out.println("Assert: Button was not clicked yet");
-		}
-		System.out.println("Assert: Button is clicked");
 	}
 
 	public void checkTwitterButton() {
