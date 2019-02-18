@@ -1,5 +1,6 @@
 package com.wrike.selenium.pages;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class ResendPageTest {
 		WebElement twitterImage  = resendPage.getTwitterImage();
 		
 		assertTrue(twitterButton.isDisplayed());
-		assertTrue((twitterLink.getAttribute("href")).equals("https://twitter.com/wrike"));
-		assertTrue(twitterImage.getAttribute("xlink:href").equals("/content/themes/wrike/dist/img/sprite/vector//footer-icons.symbol.svg?v1#twitter"));
+		assertEquals((twitterLink.getAttribute("href")),("https://twitter.com/wrike"));
+		assertEquals(twitterImage.getAttribute("xlink:href"),("/content/themes/wrike/dist/img/sprite/vector//footer-icons.symbol.svg?v1#twitter"));
 	}
 }
